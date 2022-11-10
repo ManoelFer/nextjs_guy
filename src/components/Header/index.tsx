@@ -1,9 +1,11 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 import logo from '/public/images/logo.svg'
 import { itemsMenuHandled } from 'shared/constants/itemsMenu'
 
 import { ContainerHeader, ContentHeader, LinkStyled, ReadyButton } from './styles.modules'
+
 
 export const Header = () => {
     const links = itemsMenuHandled()
@@ -11,9 +13,9 @@ export const Header = () => {
     return (
         <ContainerHeader>
             <ContentHeader>
-                <a>
+                <Link href="/">
                     <Image src={logo} alt="sujeito programador logo" />
-                </a>
+                </Link>
 
                 <nav>
                     {links.map(({ active, label, route }) => (
