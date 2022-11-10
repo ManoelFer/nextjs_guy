@@ -47,3 +47,40 @@ export const SessionNextLevel = styled.section`
         margin-top: 2.5rem;
     }
 `
+
+export const Divider = styled.hr`
+    width: 100%;
+    bottom: 0;
+    height: 1px;
+    border-color: ${({ theme }) => theme.colors.gray_200};
+`
+
+export const SectionContent = styled.div`
+    margin: 5.5rem auto;
+    max-width: 1120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    section{
+        max-width: 670px;
+    }
+
+    img {
+        max-width: 550px;
+    }
+
+    h2 {
+        font-size: 2.2rem;
+        line-height: 4.5rem;
+        font-weight: 900;
+        margin-top: 2.2rem;
+        color: ${({ theme }) => theme.colors.white};
+    }
+
+    span{
+        font-size: 1rem;
+        line-height: 2.25rem;
+        color: ${({ theme }) => theme.colors.white};
+    }
+`
