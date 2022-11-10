@@ -1,11 +1,13 @@
 import Image from 'next/image'
-import Link from 'next/link'
 
 import logo from '/public/images/logo.svg'
+import { itemsMenuHandled } from 'shared/constants/itemsMenu'
 
-import { ContainerHeader, ContentHeader, ReadyButton } from './styles.modules'
+import { ContainerHeader, ContentHeader, LinkStyled, ReadyButton } from './styles.modules'
 
 export const Header = () => {
+    const links = itemsMenuHandled()
+
     return (
         <ContainerHeader>
             <ContentHeader>
@@ -14,15 +16,15 @@ export const Header = () => {
                 </a>
 
                 <nav>
-                    <Link href="/">
-                        Home
-                    </Link>
-                    <Link href="/">
-                        Conteúdos
-                    </Link>
-                    <Link href="/">
-                        Quem somos?
-                    </Link>
+                    {links.map(({ active, label, route }) => (
+                        <LinkStyled
+                            key={label}
+                            href={route}
+                            active={active}
+                        >
+                            {label}
+                        </LinkStyled>
+                    ))}
                 </nav>
 
                 <ReadyButton type="button" href='https://sujeitoprogramador.com'>COMEÇAR</ReadyButton>

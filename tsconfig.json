@@ -23,7 +23,8 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    "src/shared/utils/updateArraysInReact.js"
   ],
   "exclude": [
     "node_modules"

@@ -1,4 +1,6 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+
+import { IStylesLink } from './interfaces.module'
 
 
 export const ContainerHeader = styled.header`
@@ -28,29 +30,6 @@ export const ContentHeader = styled.div`
     nav{
         margin-left: 5rem;
         height: 6rem;
-
-        a {
-            display: inline-block;
-            position: relative;
-            padding: 0 0.5rem;
-            height: 6rem;
-            line-height: 6rem;
-            color: ${({ theme }) => theme.colors.gray_100};
-            transition: color 0.2s;
-
-            & + a {
-                margin-left: 2rem;
-            }
-
-            &:hover {
-                color: ${({ theme }) => theme.colors.white};
-            }
-
-            &.active{
-                color: ${({ theme }) => theme.colors.yellow_500};
-                font-weight: bold;
-            }
-        }
     }
 
 
@@ -64,6 +43,29 @@ export const ContentHeader = styled.div`
             margin-right: auto;
         }
     }
+`
+
+export const LinkStyled = styled.a<IStylesLink>`
+    display: inline-block;
+    position: relative;
+    padding: 0 0.5rem;
+    height: 6rem;
+    line-height: 6rem;
+    color: ${({ theme }) => theme.colors.gray_100};
+    transition: color 0.2s;
+
+    & + a {
+        margin-left: 2rem;
+    }
+
+    &:hover {
+        color: ${({ theme }) => theme.colors.white};
+    }
+
+    ${({ active }) => active && css`
+        color: ${({ theme }) => theme.colors.yellow_500};
+        font-weight: bold;
+    `}
 `
 
 export const ReadyButton = styled.a`
