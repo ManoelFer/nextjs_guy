@@ -1,6 +1,9 @@
 import Head from "next/head";
+import Image from "next/image";
 
-import { Container, ContainerNextLevel, Divider, SectionContent, SessionNextLevel } from "./styles.home.modules";
+import techImage from "/public/images/techs.svg"
+
+import { Container, ContainerNextLevel, Divider, NextLevelContent, SectionContent, SessionNextLevel } from "./styles.home.modules";
 
 export default function Home() {
   return (
@@ -47,6 +50,16 @@ export default function Home() {
             <span>Criar sistemas web, sites usando as tecnologias mais modernas e requisitadas pelo mercado.</span>
           </section>
         </SectionContent>
+
+        <NextLevelContent>
+          <Image src={techImage} alt="Tecnologias"/>
+          <h2>Mais de <span>15 mil</span> já levaram sua carreira ao próxima nível.</h2>
+          <span>E você vai perder a chance de evoluir de uma vez por todas?</span>
+
+          <a>
+            <button>ACESSAR TURMA!</button>
+          </a>
+        </NextLevelContent>
       </Container>
     </>
   )

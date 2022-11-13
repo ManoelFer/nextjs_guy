@@ -84,3 +84,42 @@ export const SectionContent = styled.div`
         color: ${({ theme }) => theme.colors.white};
     }
 `
+
+export const NextLevelContent = styled.div`
+    max-width: 1120px;
+    margin: 6rem auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+
+    h2{
+        font-size: 2.8rem;
+        line-height: 4.5rem;
+        font-weight: 900;
+        color: ${({theme}) => theme.colors.white};
+
+        span {
+            font-size: 2.8rem;
+        line-height: 4.5rem;
+        font-weight: 900;
+        color: ${({theme}) => theme.colors.blue_900};
+        }
+    }
+
+    span{
+        font-size: ${({theme}) => theme.fontSizes.small};
+        line-height: 2.25rem;
+        color: ${({theme}) => theme.colors.white};
+    }
+
+    button {
+        background-color: ${({theme}) => theme.colors.blue_900};
+        border: 0;
+        padding: 1rem 1.8rem;
+        margin-top: 2.5rem;
+        border-radius: 6px;
+        color:  ${({theme}) => theme.colors.white};
+        font-weight: bold;
+    }
+`
