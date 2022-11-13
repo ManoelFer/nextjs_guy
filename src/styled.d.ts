@@ -17,6 +17,15 @@ declare module 'styled-components' {
             small: string,
             medium: string,
             large: string
+        },
+        devices: {
+            mobileS: string,
+            mobileM: string,
+            mobileL: string,
+            tablet: string,
+            laptop: string,
+            laptopL: string,
+            desktop: string 
         }
     }
 }

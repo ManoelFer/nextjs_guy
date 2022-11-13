@@ -16,6 +16,20 @@ export const ContainerNextLevel = styled.div`
     img {
         max-width: 640px;
     }
+
+    @media(${({theme}) => theme.devices.laptop}){
+        img {
+            max-width: 600px;
+        }
+
+        div h1{
+            font-size: ${({theme}) => theme.fontSizes.large};
+        }
+
+        div h2{
+            font-size: ${({theme}) => theme.fontSizes.medium};
+        }
+    }
 `
 
 export const SessionNextLevel = styled.section`
@@ -45,6 +59,14 @@ export const SessionNextLevel = styled.section`
         border-radius: 7px;
         font-weight: bold;
         margin-top: 2.5rem;
+    }
+
+    @media(${({theme}) => theme.devices.laptop}){
+        padding: 0 2rem;
+
+        button {
+            display: block;
+        }
     }
 `
 
@@ -82,6 +104,10 @@ export const SectionContent = styled.div`
         font-size: 1rem;
         line-height: 2.25rem;
         color: ${({ theme }) => theme.colors.white};
+    }
+
+    @media(${({theme}) => theme.devices.laptop}){
+        padding: 0 2rem;
     }
 `
 
@@ -121,5 +147,9 @@ export const NextLevelContent = styled.div`
         border-radius: 6px;
         color:  ${({theme}) => theme.colors.white};
         font-weight: bold;
+    }
+
+    @media(${({theme}) => theme.devices.laptop}){
+        padding: 0 2rem;
     }
 `
