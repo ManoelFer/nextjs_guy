@@ -17,18 +17,42 @@ export const ContainerNextLevel = styled.div`
         max-width: 640px;
     }
 
-    @media(${({theme}) => theme.devices.laptop}){
+
+    @media(${({ theme }) => theme.devices.mobileS}){
+        flex-direction: column;
+        min-height: 0;
+
+        img {
+            margin: auto;
+            max-width: 500px;
+        }
+
+        div h1{
+            font-size: ${({ theme }) => theme.fontSizes.large};
+        }
+
+        div h2{
+            font-size: ${({ theme }) => theme.fontSizes.small};
+        }
+    }
+
+    @media(${({ theme }) => theme.devices.tablet}){
         img {
             max-width: 600px;
         }
 
         div h1{
-            font-size: ${({theme}) => theme.fontSizes.large};
+            font-size: ${({ theme }) => theme.fontSizes.large};
         }
 
         div h2{
-            font-size: ${({theme}) => theme.fontSizes.medium};
+            font-size: ${({ theme }) => theme.fontSizes.medium};
         }
+    }
+
+
+    @media(${({ theme }) => theme.devices.laptop}){
+        flex-direction: row;
     }
 `
 
@@ -61,7 +85,18 @@ export const SessionNextLevel = styled.section`
         margin-top: 2.5rem;
     }
 
-    @media(${({theme}) => theme.devices.laptop}){
+    @media(${({ theme }) => theme.devices.mobileS}){
+        padding: 0 2rem;
+
+        button {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    @media(${({ theme }) => theme.devices.tablet}){
         padding: 0 2rem;
 
         button {
@@ -106,7 +141,23 @@ export const SectionContent = styled.div`
         color: ${({ theme }) => theme.colors.white};
     }
 
-    @media(${({theme}) => theme.devices.laptop}){
+    @media(${({ theme }) => theme.devices.mobileS}){
+        img {
+            max-width: 350px;
+        }
+
+        flex-direction: column;
+        padding: 0 2rem;
+        margin-top: 2rem;
+    }
+
+    @media(${({ theme }) => theme.devices.tablet}){
+        flex-direction: column;
+        padding: 0 2rem;
+    }
+
+    @media(${({ theme }) => theme.devices.laptop}){
+        flex-direction: row;
         padding: 0 2rem;
     }
 `
@@ -123,33 +174,41 @@ export const NextLevelContent = styled.div`
         font-size: 2.8rem;
         line-height: 4.5rem;
         font-weight: 900;
-        color: ${({theme}) => theme.colors.white};
+        color: ${({ theme }) => theme.colors.white};
 
         span {
             font-size: 2.8rem;
-        line-height: 4.5rem;
-        font-weight: 900;
-        color: ${({theme}) => theme.colors.blue_900};
+            line-height: 4.5rem;
+            font-weight: 900;
+            color: ${({ theme }) => theme.colors.blue_900};
         }
     }
 
     span{
-        font-size: ${({theme}) => theme.fontSizes.small};
+        font-size: ${({ theme }) => theme.fontSizes.small};
         line-height: 2.25rem;
-        color: ${({theme}) => theme.colors.white};
+        color: ${({ theme }) => theme.colors.white};
     }
 
     button {
-        background-color: ${({theme}) => theme.colors.blue_900};
+        background-color: ${({ theme }) => theme.colors.blue_900};
         border: 0;
         padding: 1rem 1.8rem;
         margin-top: 2.5rem;
         border-radius: 6px;
-        color:  ${({theme}) => theme.colors.white};
+        color:  ${({ theme }) => theme.colors.white};
         font-weight: bold;
     }
 
-    @media(${({theme}) => theme.devices.laptop}){
+    @media(${({ theme }) => theme.devices.mobileS}){
+        padding: 0 2rem;
+    }
+
+    @media(${({ theme }) => theme.devices.tablet}){
+        padding: 0 2rem;
+    }
+
+    @media(${({ theme }) => theme.devices.laptop}){
         padding: 0 2rem;
     }
 `
