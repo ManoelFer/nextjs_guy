@@ -53,3 +53,30 @@ export const Content = styled.div`
         }
     }
 `
+
+export const ContainerButtons = styled.div`
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+
+    div{
+        display: flex;
+        flex-direction: row;
+    }
+
+    button {
+        margin: 0 5px;
+        border: 0;
+        background-color: ${({ theme }) => theme.colors.blue_900};
+        color: ${({ theme }) => theme.colors.white};
+        display: flex;
+        padding: 0.5rem;
+        border-radius: 5px;
+
+        svg {
+            padding: 0 3px;
+        }
+    }
+`
