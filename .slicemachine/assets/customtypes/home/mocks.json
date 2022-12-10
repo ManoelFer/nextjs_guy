@@ -1,0 +1,79 @@
+{
+  "id": "mock-doc-id",
+  "url": null,
+  "type": "home",
+  "href": null,
+  "tags": [],
+  "first_publication_date": "1970-01-01T00:00:01+0000",
+  "last_publication_date": "1970-01-01T00:00:01+0000",
+  "slugs": [],
+  "linked_documents": [],
+  "lang": "en-us",
+  "alternate_languages": [],
+  "data": {
+    "title": [
+      {
+        "type": "heading1",
+        "text": "Treated",
+        "spans": []
+      }
+    ],
+    "sub_title": [
+      {
+        "type": "paragraph",
+        "text": "Ex cupidatat non non anim do ullamco.",
+        "spans": []
+      }
+    ],
+    "link_action": {
+      "link_type": "Web",
+      "url": "http://google.com"
+    },
+    "mobile": [
+      {
+        "type": "heading2",
+        "text": "These",
+        "spans": []
+      }
+    ],
+    "mobile_content": [
+      {
+        "type": "paragraph",
+        "text": "Non nostrud fugiat consequat ullamco pariatur nisi deserunt cupidatat do. Minim adipisicing Lorem Lorem commodo voluptate culpa enim duis minim consequat.",
+        "spans": []
+      }
+    ],
+    "mobile_banner": {
+      "dimensions": {
+        "width": 900,
+        "height": 500
+      },
+      "alt": null,
+      "copyright": null,
+      "url": "https://images.unsplash.com/photo-1587905069134-008460d7a636"
+    },
+    "title_web": [
+      {
+        "type": "heading1",
+        "text": "Anybody",
+        "spans": []
+      }
+    ],
+    "web_content": [
+      {
+        "type": "paragraph",
+        "text": "Nulla esse in cillum tempor ullamco in sint fugiat esse. Excepteur esse eu elit nulla esse mollit.",
+        "spans": []
+      }
+    ],
+    "web_banner": {
+      "dimensions": {
+        "width": 900,
+        "height": 500
+      },
+      "alt": null,
+      "copyright": null,
+      "url": "https://images.unsplash.com/photo-1547082299-de196ea013d6"
+    }
+  }
+}
