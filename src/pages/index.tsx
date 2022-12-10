@@ -1,11 +1,17 @@
+import { GetStaticProps } from "next";
 import Head from "next/head";
 import Image from "next/image";
 
+import { createClient } from 'services/prismic'
+
 import techImage from "/public/images/techs.svg"
+
+import { IHomeProps } from "./interfaces.home.modules";
 
 import { Container, ContainerNextLevel, Divider, NextLevelContent, SectionContent, SessionNextLevel } from "./styles.home.modules";
 
-export default function Home() {
+export default function Home({ content }: IHomeProps) {
+
   return (
     <>
       <Head>
@@ -14,9 +20,9 @@ export default function Home() {
       <Container>
         <ContainerNextLevel>
           <SessionNextLevel>
-            <h1>Levando você ao próximo nível!</h1>
-            <span>Uma plataforma com cursos que vão do zero até o profissional na pratica, direto ao ponto aplicando o que usamos no mercado de trabalho. 👊</span>
-            <a>
+            <h1>{content.title}</h1>
+            <span>{content.sub_title}</span>
+            <a href={content.link_action}>
               <button>
                 COMEÇAR AGORA!
               </button>
@@ -33,26 +39,26 @@ export default function Home() {
 
         <SectionContent>
           <section>
-            <h2>Aprenda a criar aplicativos para Android e IOS</h2>
-            <span>Você vai descobrir o jeito mais moderno de desenvolver apps nativos para iOS e Android, construindo aplicativos do zero até aplicativos.</span>
+            <h2>{content.mobile}</h2>
+            <span>{content.mobile_content}</span>
           </section>
 
-          <img src="/images/financasApp.png" alt="Conteúdos desenvolvimento de apps" />
+          <img src={content.mobile_banner} alt="Conteúdos desenvolvimento de apps" />
         </SectionContent>
 
         <Divider />
 
         <SectionContent>
-          <img src="/images/webDev.png" alt="Conteúdos desenvolvimento de apps" />
+          <img src={content.web_banner} alt="Conteúdos desenvolvimento de apps" />
 
           <section>
-            <h2>Aprenda a criar sistemas web</h2>
-            <span>Criar sistemas web, sites usando as tecnologias mais modernas e requisitadas pelo mercado.</span>
+            <h2>{content.title_web}</h2>
+            <span>{content.web_content}</span>
           </section>
         </SectionContent>
 
         <NextLevelContent>
-          <Image src={techImage} alt="Tecnologias"/>
+          <Image src={techImage} alt="Tecnologias" />
           <h2>Mais de <span>15 mil</span> já levaram sua carreira ao próxima nível.</h2>
           <span>E você vai perder a chance de evoluir de uma vez por todas?</span>
 
@@ -63,4 +69,40 @@ export default function Home() {
       </Container>
     </>
   )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const prismic = createClient()
+
+  const { data } = await prismic.getByUID('home', "1")
+  const {
+    title,
+    sub_title,
+    link_action,
+    mobile,
+    mobile_content,
+    mobile_banner,
+    title_web,
+    web_content,
+    web_banner
+  } = data
+
+  const content = {
+    title: title[0].text,
+    sub_title: sub_title[0].text,
+    link_action: link_action.url,
+    mobile: mobile[0].text,
+    mobile_content: mobile_content[0].text,
+    mobile_banner: mobile_banner.url,
+    title_web: title_web[0].text,
+    web_content: web_content[0].text,
+    web_banner: web_banner.url
+  }
+
+  return {
+    props: {
+      content
+    },
+    revalidate: 60 * 2 //every two minutes
+  }
 }
