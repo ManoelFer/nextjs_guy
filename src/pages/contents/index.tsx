@@ -1,14 +1,38 @@
+import { useState } from 'react'
+
+import { GetStaticProps } from "next"
 import Head from "next/head"
 import Image from "next/image"
 import Link from "next/link"
 
 import { FiChevronLeft, FiChevronsLeft, FiChevronRight, FiChevronsRight } from "react-icons/fi"
 
-import thumbImg from "/public/images/thumb.png"
+import { paginate } from 'shared/utils'
+
+import { createClient } from "services/prismic"
+
+import { IPostsProps } from './interface.contents.module'
 
 import { Container, ContainerButtons, Content } from "./styles.module"
 
-function Posts() {
+
+export default function Posts({ posts: postsBlog }: IPostsProps) {
+    const perPage = 3
+    const totalPages = Math.ceil(postsBlog.length / perPage)
+    const [currentPage, setCurrentPage] = useState(1)
+    const [posts, setPosts] = useState(paginate(postsBlog, perPage, currentPage) || [])
+
+
+    const nextPost = (jumpToPage: number) => {
+        setCurrentPage(currentPage + jumpToPage)
+        setPosts(paginate(postsBlog, perPage, currentPage + jumpToPage))
+    }
+
+    function backPost(jumpToPage: number) {
+        setCurrentPage(currentPage - jumpToPage)
+        setPosts(paginate(postsBlog, perPage, currentPage - 1))
+    }
+
     return (
         <>
             <Head>
@@ -16,38 +40,49 @@ function Posts() {
             </Head>
             <Container>
                 <Content>
-                    <Link href="/">
-                        <Image
-                            src={thumbImg}
-                            alt="Post"
-                            width={720}
-                            height={410}
-                            quality={100}
-                        />
-                        <strong>Criando meu primeiro aplicativo</strong>
-                        <time>14 JULHO 2021</time>
-                        <p>Hoje vamos criar o controle de mostrar a senha no input, uma opção para os nossos formulários de cadastro e login. Mas chega de conversa e bora pro código junto comigo que o vídeo está show de bola!</p>
-                    </Link>
+                    {posts.map(({ slug, cover, title, updatedAt, description }) => (
+                        <Link key={slug} href={`/contents/${slug}`}>
+                            <Image
+                                src={cover}
+                                alt={title}
+                                width={720}
+                                height={410}
+                                quality={100}
+                                placeholder='blur'
+                                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN0rAcAAQcAwniY66EAAAAASUVORK5CYII="
+                            />
+                            <strong>{title}</strong>
+                            <time>{updatedAt}</time>
+                            <p>{description}</p>
+                        </Link>
+                    ))}
 
                     <ContainerButtons>
-                        <div>
-                            <button>
-                                <FiChevronsLeft size={25} color="#FFF" />
-                            </button>
-                            <button>
-                                <FiChevronLeft size={25} color="#FFF" />
-                            </button>
-                        </div>
+                        {
+                            currentPage >= 2 && (
+                                <div>
+                                    <button onClick={() => backPost(2)}>
+                                        <FiChevronsLeft size={25} color="#FFF" />
+                                    </button>
+                                    <button onClick={() => backPost(1)}>
+                                        <FiChevronLeft size={25} color="#FFF" />
+                                    </button>
+                                </div>
+                            )
+                        }
 
-                        <div>
-                            <button>
-                                <FiChevronsRight size={25} color="#FFF" />
-                            </button>
-                            <button>
-                                <FiChevronRight size={25} color="#FFF" />
-                            </button>
-                        </div>
-
+                        {
+                            currentPage < totalPages && (
+                                <div>
+                                    <button onClick={() => nextPost(2)}>
+                                        <FiChevronsRight size={25} color="#FFF" />
+                                    </button>
+                                    <button onClick={() => nextPost(1)}>
+                                        <FiChevronRight size={25} color="#FFF" />
+                                    </button>
+                                </div>
+                            )
+                        }
                     </ContainerButtons>
                 </Content>
             </Container>
@@ -55,4 +90,35 @@ function Posts() {
     )
 }
 
-export default Posts
+export const getStaticProps: GetStaticProps = async () => {
+    const client = createClient()
+
+    const result = await client.getAllByType('post', {
+        orderings: {
+            field: 'document.last_publication_date',
+            direction: 'desc',
+        },
+        fetch: ["post.title", "post.description", "post.cover"]
+    })
+
+    const posts = result.map((post) => {
+        return {
+            slug: post.uid,
+            title: post.data.title[0].text,
+            description: post.data.description.find((content: any) => content.type === 'paragraph')?.text ?? '',
+            cover: post.data.cover.url,
+            updatedAt: new Date(post.last_publication_date).toLocaleDateString('pt-BR', {
+                day: '2-digit',
+                month: 'long',
+                year: 'numeric'
+            })
+        }
+    })
+
+    return {
+        props: {
+            posts
+        },
+        revalidate: 60 * 2 //every two minutes
+    }
+}
