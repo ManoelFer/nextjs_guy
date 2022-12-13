@@ -18,7 +18,7 @@ const itemsMenu = [
         active: false,
     },
     {
-        route: '/who_we_are',
+        route: '/about',
         label: 'Quem somos?',
         active: false,
     }

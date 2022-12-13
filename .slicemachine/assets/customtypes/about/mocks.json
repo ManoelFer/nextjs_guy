@@ -1,0 +1,54 @@
+{
+  "id": "mock-doc-id",
+  "url": null,
+  "type": "about",
+  "href": null,
+  "tags": [],
+  "first_publication_date": "1970-01-01T00:00:01+0000",
+  "last_publication_date": "1970-01-01T00:00:01+0000",
+  "slugs": [],
+  "linked_documents": [],
+  "lang": "en-us",
+  "alternate_languages": [],
+  "data": {
+    "title": [
+      {
+        "type": "heading1",
+        "text": "Ocean",
+        "spans": []
+      }
+    ],
+    "description": [
+      {
+        "type": "paragraph",
+        "text": "Duis quis ipsum pariatur dolore proident cupidatat laboris ad esse quis excepteur dolore.",
+        "spans": []
+      }
+    ],
+    "banner": {
+      "dimensions": {
+        "width": 900,
+        "height": 500
+      },
+      "alt": null,
+      "copyright": null,
+      "url": "https://images.unsplash.com/photo-1504198070170-4ca53bb1c1fa"
+    },
+    "facebook": {
+      "link_type": "Web",
+      "url": "http://twitter.com"
+    },
+    "youtube": {
+      "link_type": "Web",
+      "url": "http://google.com"
+    },
+    "linkedin": {
+      "link_type": "Web",
+      "url": "https://prismic.io"
+    },
+    "instagram": {
+      "link_type": "Web",
+      "url": "http://twitter.com"
+    }
+  }
+}
