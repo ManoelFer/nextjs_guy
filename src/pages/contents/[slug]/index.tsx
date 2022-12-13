@@ -1,6 +1,8 @@
 import React from 'react'
 
 import { GetServerSideProps } from 'next'
+import Head from 'next/head'
+import Image from 'next/image'
 
 import * as prismicH from '@prismicio/helpers'
 
@@ -8,16 +10,35 @@ import { createClient } from "services/prismic"
 
 import { IPostDetails } from './intefaces.module'
 
-import { ContainerPostDetail } from './styles.module'
+import { ContainerPostDetail, Content, Description } from './styles.module'
 
 
 export default function Post({ post }: IPostDetails) {
     console.log('post :>> ', post);
 
     return (
-        <ContainerPostDetail>
-            <h1>Detalhes dessa postagem</h1>
-        </ContainerPostDetail>
+        <>
+            <Head>
+                {post.title}
+            </Head>
+            <ContainerPostDetail>
+                <Content>
+                    <Image
+                        quality={100}
+                        src={post.cover}
+                        width={720}
+                        height={410}
+                        alt={post.title}
+                        placeholder="blur"
+                        blurDataURL='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN0rAcAAQcAwniY66EAAAAASUVORK5CYII='
+                    />
+
+                    <h1>{post.title}</h1>
+                    <time>{post.updatedAt}</time>
+                    <Description dangerouslySetInnerHTML={{ __html: post.description }}></Description>
+                </Content>
+            </ContainerPostDetail>
+        </>
     )
 }
 
