@@ -6,9 +6,9 @@ import { createClient } from 'services/prismic'
 
 import techImage from "/public/images/techs.svg"
 
-import { IHomeProps } from "./interfaces.home.modules";
+import { IHomeProps } from "./interfaces.home";
 
-import { Container, ContainerNextLevel, Divider, NextLevelContent, SectionContent, SessionNextLevel } from "./styles.home.modules";
+import { Container, ContainerNextLevel, Divider, NextLevelContent, SectionContent, SessionNextLevel } from "./styles.home";
 
 export default function Home({ content }: IHomeProps) {
 

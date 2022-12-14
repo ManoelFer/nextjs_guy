@@ -7,7 +7,8 @@ const nextConfig = {
   },
   images: {
     domains: ['images.prismic.io']
-  }
+  },
+  pageExtensions: ['page.tsx', 'page.ts', 'page.jsx', 'page.js']
 }
 
 module.exports = nextConfig

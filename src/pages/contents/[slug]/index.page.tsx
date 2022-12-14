@@ -8,9 +8,9 @@ import * as prismicH from '@prismicio/helpers'
 
 import { createClient } from "services/prismic"
 
-import { IPostDetails } from './intefaces.module'
+import { IPostDetails } from './intefaces'
 
-import { ContainerPostDetail, Content, Description } from './styles.module'
+import { ContainerPostDetail, Content, Description } from './styles'
 
 
 export default function Post({ post }: IPostDetails) {

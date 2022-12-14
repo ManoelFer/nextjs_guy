@@ -11,9 +11,9 @@ import { paginate } from 'shared/utils'
 
 import { createClient } from "services/prismic"
 
-import { IPostsProps } from './interface.contents.module'
+import { IPostsProps } from './interface.contents'
 
-import { Container, ContainerButtons, Content } from "./styles.module"
+import { Container, ContainerButtons, Content } from "./styles"
 
 
 export default function Posts({ posts: postsBlog }: IPostsProps) {

@@ -8,9 +8,9 @@ import * as prismicH from '@prismicio/helpers'
 
 import { createClient } from 'services/prismic'
 
-import { IAboutProps } from './interfaces.module'
+import { IAboutProps } from './interfaces.modules'
 
-import { Container, Content, SectionText } from './styles.module'
+import { Container, Content, SectionText } from './styles.modules'
 
 
 export default function About({ about }: IAboutProps) {
