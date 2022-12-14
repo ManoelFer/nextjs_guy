@@ -7,13 +7,24 @@ export const Container = styled.main`
 export const Content = styled.div`
     min-height: calc(100vh - 6rem);
     margin: 0 auto;
-    width: 1120px;
+    max-width: 1120px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     img {
         max-width: 600px;
+    }
+
+    @media(max-width: 1110px){
+        flex-direction: column;
+        align-items: center;
+        padding: 0.5rem 1rem;
+
+        img {
+            max-width: 390px;
+            padding: 1.5rem 0;
+        }
     }
 `
 
@@ -46,5 +57,12 @@ export const SectionText = styled.section`
 
     svg:hover {
         color: ${({ theme }) => theme.colors.blue_900};
+    }
+
+    @media(max-width: 1110px){
+        h1 {
+            font-size: 2.5rem;
+        }
+        
     }
 `
