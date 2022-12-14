@@ -14,9 +14,6 @@ import { Container, Content, SectionText } from './styles.module'
 
 
 export default function About({ about }: IAboutProps) {
-
-    console.log('about :>> ', about);
-
     return (
         <>
             <Head>
@@ -71,6 +68,7 @@ export const getStaticProps: GetStaticProps = async () => {
     return {
         props: {
             about
-        }
+        },
+        revalidate: 60 * 15 // 15 minutes revalidate
     }
 }
